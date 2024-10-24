@@ -21,12 +21,17 @@
             font-style: normal;
         }
 
+        
         body {
             scroll-behavior: smooth;
+            padding: .8rem;
+            scrollbar-width: none;
+            
+        }
+        main{
             border: 3px solid #ffffff;
             border-radius: 1rem;
             margin: .5rem;
-            background-color: #000; /* Asegurar fondo oscuro */
         }
 
         .botones {
@@ -78,20 +83,25 @@
             width: 80px;
             height: 80px;
             margin: 10px;
-            border: 4px solid #d32f2f; /* Borde rojo vibrante */
+            border: 4px solid #d32f2f;
+            /* Borde rojo vibrante */
             border-radius: 50%;
-            background: radial-gradient(circle at 30% 30%, #f44336, #b71c1c); /* Degradado de rojo */
+            background: radial-gradient(circle at 30% 30%, #f44336, #b71c1c);
+            /* Degradado de rojo */
             box-shadow:
                 inset -4px -4px 10px rgba(0, 0, 0, 0.2),
-                0 0 20px rgba(211, 47, 47, 0.6); /* Sombra externa roja */
+                0 0 20px rgba(211, 47, 47, 0.6);
+            /* Sombra externa roja */
             transition: transform 0.1s, box-shadow 0.1s;
             cursor: pointer;
             overflow: hidden;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: white; /* Color del texto */
-            font-size: 2rem; /* Tamaño del texto */
+            color: white;
+            /* Color del texto */
+            font-size: 2rem;
+            /* Tamaño del texto */
             font-weight: bold;
             text-transform: uppercase;
             font-family: 'PixelFont', sans-serif;
@@ -100,29 +110,36 @@
         /* Clases personalizadas para desplazar botones hacia arriba */
         .shift-up-small {
             position: relative;
-            top: -20px; /* Desplaza el botón 20 píxeles hacia arriba */
+            top: -20px;
+            /* Desplaza el botón 20 píxeles hacia arriba */
         }
 
         .shift-up-large {
             position: relative;
-            top: -40px; /* Desplaza el botón 40 píxeles hacia arriba */
+            top: -40px;
+            /* Desplaza el botón 40 píxeles hacia arriba */
         }
 
         /* Estado hover */
         .arcade-button:hover {
             box-shadow:
                 inset -2px -2px 5px rgba(0, 0, 0, 0.2),
-                0 0 30px rgba(211, 47, 47, 0.8); /* Mayor resplandor rojo al pasar el cursor */
-            color: #fff3e0; /* Cambia el color del texto al hacer hover */
+                0 0 30px rgba(211, 47, 47, 0.8);
+            /* Mayor resplandor rojo al pasar el cursor */
+            color: #fff3e0;
+            /* Cambia el color del texto al hacer hover */
         }
 
         /* Estado active con desplazamiento hacia abajo */
         .arcade-button:active {
-            transform: scale(0.95) translateY(5px); /* Escala y desplaza hacia abajo */
+            transform: scale(0.95) translateY(5px);
+            /* Escala y desplaza hacia abajo */
             box-shadow:
                 inset 2px 2px 5px rgba(0, 0, 0, 0.2),
-                0 0 15px rgba(211, 47, 47, 0.5); /* Efecto de pulsación con sombra roja */
-            color: #ffe0b2; /* Cambia el color del texto al hacer clic */
+                0 0 15px rgba(211, 47, 47, 0.5);
+            /* Efecto de pulsación con sombra roja */
+            color: #ffe0b2;
+            /* Cambia el color del texto al hacer clic */
         }
 
         /* Brillo animado opcional */
@@ -133,7 +150,7 @@
             left: -50%;
             width: 200%;
             height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 70%);
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0) 70%);
             opacity: 0;
             transition: opacity 0.3s;
             pointer-events: none;
@@ -145,40 +162,49 @@
 
         /* Estilos para los párrafos debajo de los botones */
         .arcade-label {
-            font-family: 'PixelFont', sans-serif; /* Fuente pixelada opcional */
+            font-family: 'PixelFont', sans-serif;
+            /* Fuente pixelada opcional */
             font-size: 1.5rem;
             margin-top: 15px;
         }
-        /* Estilo para el botón con fondo blanco */
-.btn-white {
-    background-color: #fbd500;
-    color: #212529; /* Color de texto rojo para mantener la coherencia */    
-    transition: background-color 0.3s, color 0.3s;
-}
 
-/* Efecto hover para el botón */
-.btn-white:hover {
-    background-color: #212529;
-    color: #fbd500;
-    border-color: #fbd500;
-}
-.bi-check-circle-fill{
-    color: #fbd500;
-}
+        /* Estilo para el botón con fondo blanco */
+        .btn-white {
+            background-color: #fbd500;
+            color: #212529;
+            /* Color de texto rojo para mantener la coherencia */
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        /* Efecto hover para el botón */
+        .btn-white:hover {
+            background-color: #212529;
+            color: #fbd500;
+            border-color: #fbd500;
+        }
+
+        .bi-check-circle-fill {
+            color: #fbd500;
+        }
+
+        footer {
+            font-family: "Anton", sans-serif;
+        }
     </style>
 </head>
 
-<body class="bg-dark">
+<body class="bg-dark ">
     <main class="text-white container-fluid">
         <h2 class="pixelfont text-center fs-1 mt-3">¿Como jugar?</h2>
         <div class="d-flex justify-content-center my-5">
-            <a href="https://www.instagram.com/insertcoinbox/" target="_blank" class="text-center"><img src="img/logo.png" class="w-25 neon-logo" alt="Logo"></a>
-            
+            <a href="https://www.instagram.com/insertcoinbox/" target="_blank" class="text-center"><img
+                    src="img/logo.png" class="w-25 neon-logo" alt="Logo"></a>
+
         </div>
 
         <section class="my-3 border-bottom">
-            <h3 class="fs-2 pixelfont">Ficha</h3>
-            <ul class="list-unstyled my-4">
+            <h3 class="fs-2 pixelfont mx-3">Ficha</h3>
+            <ul class="list-unstyled my-4 mx-3">
                 <li class="my-2 mont"><i class="bi bi-check-circle-fill me-2"></i>Escaneá el QR (Solo admite Mercado
                     Pago)</li>
                 <li class="my-2 mont"><i class="bi bi-check-circle-fill me-2"></i>Después de la acreditación del pago,
@@ -205,20 +231,23 @@
 
                 <!-- Botón Select -->
                 <div class="col d-flex flex-column justify-content-center align-items-center">
-                    <button id="selectButton" class="arcade-button btn select-button fs-1" aria-label="Botón Select" style="font-family: 'Anton', sans-serif;">
+                    <button id="selectButton" class="arcade-button btn select-button fs-1" aria-label="Botón Select"
+                        style="font-family: 'Anton', sans-serif;">
                         COIN
                     </button>
                     <p class="arcade-label mt-3 text-center fs-3 pixelfont">select_</p>
                 </div>
             </div>
 
-            <h3 class="pixelfont ">tambien...</h3>
+            <h3 class="pixelfont mx-3">tambien...</h3>
 
             <div class="container-fluid d-flex flex-column justify-content-center align-items-center my-4">
-                <button id="sButton" class="arcade-button btn select-button fs-1" aria-label="Botón Insert Coin" style="font-family: 'Anton', sans-serif;">
+                <button id="sButton" class="arcade-button btn select-button fs-1" aria-label="Botón Insert Coin"
+                    style="font-family: 'Anton', sans-serif;">
                     COIN
                 </button>
-                <p class="pixelfont fs-3 mt-3 mb-4 text-center"> oprimiendo este boton Inserta fichas <span class="text-decoration-underline">solo en juegos arcade</span></p>
+                <p class="pixelfont fs-3 mt-3 mb-4 text-center"> oprimiendo este boton Inserta fichas <span
+                        class="text-decoration-underline">solo en juegos arcade</span></p>
             </div>
 
             <div class="container text-center mb-5">
@@ -267,54 +296,64 @@
 
         <section class="my-3 border-bottom">
             <div class="my-5">
-                <h3 class="fs-2 pixelfont text-center"><span class="fs-1">Todas las fichas</span><br>equivalen a 12 minutos
+                <h3 class="fs-2 pixelfont text-center"><span class="fs-1">Todas las fichas</span><br>equivalen a 12
+                    minutos
                     de juego</h3>
             </div>
         </section>
 
         <!-- Sección para dejar comentarios -->
-<section class="my-4">
-    <div class=" p-4">
-        <!-- <h2 class="pixelfont mb-4">Contanos tu experiencia</h2> -->
-        <!-- Botón para abrir el modal -->
-        <button type="button" class="btn btn-white  py-3 fs-5 pixelfont" data-bs-toggle="modal" data-bs-target="#feedbackModal">
-            Contanos tu experiencia
-        </button>
-    </div>
-</section>
+        <section class="my-4">
+            <div class=" p-4">
+                <!-- <h2 class="pixelfont mb-4">Contanos tu experiencia</h2> -->
+                <!-- Botón para abrir el modal -->
+                <button type="button" class="btn btn-white  py-3 fs-5 pixelfont" data-bs-toggle="modal"
+                    data-bs-target="#feedbackModal">
+                    Contanos tu experiencia
+                </button>
+            </div>
+        </section>
 
-<!-- Modal -->
-<div class="modal fade" id="feedbackModal" tabindex="-1" aria-labelledby="feedbackModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5 pixelfont text-secondary" id="feedbackModalLabel ">Dejanos tu Comentario</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
-      </div>
-      <div class="modal-body">
-        <form id="feedbackForm" action="php/send_feedback.php" method="POST">
-          <div class="mb-3">
-            <label for="name" class="form-label text-secondary">Nombre</label>
-            <input type="text" class="form-control" id="name" name="name" required>
-          </div>
-          <div class="mb-3">
-            <label for="email" class="form-label text-secondary">Correo Electrónico</label>
-            <input type="email" class="form-control" id="email" name="email" required>
-          </div>
-          <div class="mb-3">
-            <label for="message" class="form-label text-secondary">Comentario</label>
-            <textarea class="form-control" id="message" name="message" rows="4" required></textarea>
-          </div>
-          <button type="submit" class="btn btn-primary">Enviar</button>
-        </form>
-      </div>
-    </div>
-  </div>
-</div>
+        <!-- Modal -->
+        <div class="modal fade" id="feedbackModal" tabindex="-1" aria-labelledby="feedbackModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5 pixelfont text-secondary" id="feedbackModalLabel ">Dejanos tu
+                            Comentario</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="feedbackForm" action="php/send_feedback.php" method="POST">
+                            <div class="mb-3">
+                                <label for="name" class="form-label text-secondary">Nombre</label>
+                                <input type="text" class="form-control" id="name" name="name" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="email" class="form-label text-secondary">Correo Electrónico</label>
+                                <input type="email" class="form-control" id="email" name="email" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="message" class="form-label text-secondary">Comentario</label>
+                                <textarea class="form-control" id="message" name="message" rows="4" required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Enviar</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-        
+
     </main>
     <footer>
+        <!-- Firma -->
+        <div class="container text-end mt-3">
+            <p class="text-white">Desarrollado por <a href="https://1985webdesing.com/" style="color:#BBFF01">1985
+                    WebDesing</a> |
+                © <span id="current-year"></span></p>
+        </div>
     </footer>
 
     <!-- Archivos de sonido -->
@@ -327,47 +366,54 @@
     <audio id="soundB" src="sounds/itsme.mp3"></audio>
     <audio id="soundR" src="sounds/ringsonic.mp3"></audio>
     <audio id="soundCoin" src="sounds/lostmario.mp3"></audio>
-
+    <!-- Año de la firma -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const yearSpan = document.getElementById('current-year');
+            const currentYear = new Date().getFullYear();
+            yearSpan.textContent = currentYear;
+        });
+    </script>
     <!-- Enlaza Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
 
-        <script>
-            // Función para reproducir sonido (ya existente)
-            function playSound(soundId) {
-                const sound = document.getElementById(soundId);
-                if (sound) { // Verifica que el sonido exista
-                    sound.currentTime = 0; // Reinicia el sonido si se presiona varias veces
-                    sound.play();
-                } else {
-                    console.error(`Elemento de audio con ID "${soundId}" no encontrado.`);
-                }
+    <script>
+        // Función para reproducir sonido (ya existente)
+        function playSound(soundId) {
+            const sound = document.getElementById(soundId);
+            if (sound) { // Verifica que el sonido exista
+                sound.currentTime = 0; // Reinicia el sonido si se presiona varias veces
+                sound.play();
+            } else {
+                console.error(`Elemento de audio con ID "${soundId}" no encontrado.`);
             }
-        
-            // Asignar eventos a los botones (ya existente)
-            document.getElementById('startButton').addEventListener('click', () => playSound('soundStart'));
-            document.getElementById('selectButton').addEventListener('click', () => playSound('soundSelect'));
-            document.getElementById('yButton').addEventListener('click', () => playSound('soundY'));
-            document.getElementById('xButton').addEventListener('click', () => playSound('soundX'));
-            document.getElementById('lButton').addEventListener('click', () => playSound('soundL'));
-            document.getElementById('aButton').addEventListener('click', () => playSound('soundA'));
-            document.getElementById('bButton').addEventListener('click', () => playSound('soundB'));
-            document.getElementById('rButton').addEventListener('click', () => playSound('soundR'));
-            document.getElementById('sButton').addEventListener('click', () => playSound('soundCoin')); // Corregido
-        
-            // Manejar el envío del formulario con AJAX
-            document.getElementById('feedbackForm').addEventListener('submit', function(e) {
-                e.preventDefault(); // Prevenir el comportamiento por defecto del formulario
-        
-                const form = this;
-                const formData = new FormData(form);
-        
-                // Enviar los datos del formulario mediante Fetch API
-                fetch('send_feedback.php', {
-                    method: 'POST',
-                    body: formData
-                })
+        }
+
+        // Asignar eventos a los botones (ya existente)
+        document.getElementById('startButton').addEventListener('click', () => playSound('soundStart'));
+        document.getElementById('selectButton').addEventListener('click', () => playSound('soundSelect'));
+        document.getElementById('yButton').addEventListener('click', () => playSound('soundY'));
+        document.getElementById('xButton').addEventListener('click', () => playSound('soundX'));
+        document.getElementById('lButton').addEventListener('click', () => playSound('soundL'));
+        document.getElementById('aButton').addEventListener('click', () => playSound('soundA'));
+        document.getElementById('bButton').addEventListener('click', () => playSound('soundB'));
+        document.getElementById('rButton').addEventListener('click', () => playSound('soundR'));
+        document.getElementById('sButton').addEventListener('click', () => playSound('soundCoin')); // Corregido
+
+        // Manejar el envío del formulario con AJAX
+        document.getElementById('feedbackForm').addEventListener('submit', function (e) {
+            e.preventDefault(); // Prevenir el comportamiento por defecto del formulario
+
+            const form = this;
+            const formData = new FormData(form);
+
+            // Enviar los datos del formulario mediante Fetch API
+            fetch('send_feedback.php', {
+                method: 'POST',
+                body: formData
+            })
                 .then(response => response.json()) // Parsear la respuesta como JSON
                 .then(data => {
                     if (data.success) {
@@ -400,12 +446,12 @@
                         'error'
                     );
                 });
-            });
-        </script>
-        
+        });
+    </script>
 
-</script>
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 </body>
 
