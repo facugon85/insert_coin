@@ -1,0 +1,11 @@
+# Ignorar dependencias
+/vendor/
+
+# Ignorar archivos de entorno
+.env
+
+# Ignorar logs
+/logs/
+
+# Ignorar archivos de configuración del IDE
+.vscode/
