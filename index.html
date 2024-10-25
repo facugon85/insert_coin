@@ -1,15 +1,25 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Insert Coin_</title>
     <link rel="shortcut icon" href="img/logo.png" type="image/png">
+    
+    <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    
+    <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    
+    <!-- SweetAlert2 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" rel="stylesheet">
+    
+    <!-- Locomotive Scroll CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.css">
+    
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
         @import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
@@ -21,17 +31,19 @@
             font-style: normal;
         }
 
-        
         body {
             scroll-behavior: smooth;
             padding: .8rem;
             scrollbar-width: none;
-            
+            background-color: #121212; /* Fondo oscuro para mejor contraste */
         }
-        main{
+
+        main {
             border: 3px solid #ffffff;
             border-radius: 1rem;
             margin: .5rem;
+            padding: 2rem;
+            background-color: #1a1a1a; /* Fondo oscuro para contrastar */
         }
 
         .botones {
@@ -190,171 +202,205 @@
         footer {
             font-family: "Anton", sans-serif;
         }
+
+        /* Estilos adicionales para los formularios */
+        .form-section {
+            background-color: #2c2c2c;
+            border-radius: 1rem;
+            padding: 2rem;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+        }
+
+        .form-section h2 {
+            margin-bottom: 1.5rem;
+        }
+
+        /* Locomotive Scroll adjustments */
+        [data-scroll-container] {
+            overflow: hidden;
+        }
     </style>
 </head>
 
-<body class="bg-dark ">
-    <main class="text-white container-fluid">
-        <h2 class="pixelfont text-center fs-1 mt-3">¿Como jugar?</h2>
-        <div class="d-flex justify-content-center my-5">
-            <a href="https://www.instagram.com/insertcoinbox/" target="_blank" class="text-center"><img
-                    src="img/logo.png" class="w-25 neon-logo" alt="Logo"></a>
+<body class="bg-dark">
+    <!-- Locomotive Scroll Container -->
+    <div data-scroll-container>
+        <main class="text-white container-fluid">
+            <h2 class="pixelfont text-center fs-1 mt-3">¿Cómo jugar?</h2>
+            <div class="d-flex justify-content-center my-5">
+                <a href="https://www.instagram.com/insertcoinbox/" target="_blank" class="text-center"><img
+                        src="img/logo.png" class="w-25 neon-logo" alt="Logo"></a>
+            </div>
 
-        </div>
+            <section class="my-3 border-bottom">
+                <h3 class="fs-2 pixelfont mx-3">Ficha</h3>
+                <ul class="list-unstyled my-4 mx-3">
+                    <li class="my-2 mont"><i class="bi bi-check-circle-fill me-2"></i>Escaneá el QR (Solo admite Mercado
+                        Pago)</li>
+                    <li class="my-2 mont"><i class="bi bi-check-circle-fill me-2"></i>Después de la acreditación del pago,
+                        el tiempo comienza a correr.</li>
+                    <li class="my-2 mont"><i class="bi bi-check-circle-fill me-2"></i>Seleccioná el juego que quieras.</li>
+                    <li class="my-2 mont"><i class="bi bi-check-circle-fill me-2"></i>Después del desbloqueo, se habilitan
+                        ambos joysticks.</li>
+                    <li class="my-2 mont"><i class="bi bi-check-circle-fill me-2"></i>Pasado el tiempo, el Arcade se vuelve
+                        a bloquear.</li>
+                    <li class="my-2 mont"><i class="bi bi-check-circle-fill me-2"></i>Valor de la ficha: $2500.</li>
+                </ul>
+            </section>
 
-        <section class="my-3 border-bottom">
-            <h3 class="fs-2 pixelfont mx-3">Ficha</h3>
-            <ul class="list-unstyled my-4 mx-3">
-                <li class="my-2 mont"><i class="bi bi-check-circle-fill me-2"></i>Escaneá el QR (Solo admite Mercado
-                    Pago)</li>
-                <li class="my-2 mont"><i class="bi bi-check-circle-fill me-2"></i>Después de la acreditación del pago,
-                    el tiempo comienza a correr.</li>
-                <li class="my-2 mont"><i class="bi bi-check-circle-fill me-2"></i>Seleccioná el juego que quieras.</li>
-                <li class="my-2 mont"><i class="bi bi-check-circle-fill me-2"></i>Después del desbloqueo, se habilitan
-                    ambos joysticks.</li>
-                <li class="my-2 mont"><i class="bi bi-check-circle-fill me-2"></i>Pasado el tiempo, el Arcade se vuelve
-                    a bloquear.</li>
-                <li class="my-2 mont"><i class="bi bi-check-circle-fill me-2"></i>Valor: $2500.</li>
-            </ul>
-        </section>
+            <section class="my-3 border-bottom">
+                <h3 class="fs-2 pixelfont text-start ms-3 pt-4">DISTRIBUCIoN DE BOTONES:</h3>
+                <div class="row my-5">
+                    <!-- Botón Start -->
+                    <div class="col d-flex flex-column justify-content-center align-items-center">
+                        <button id="startButton" class="arcade-button btn" aria-label="Botón Start">
+                            <i class="bi bi-person-standing"></i>
+                        </button>
+                        <p class="arcade-label mt-3 text-center fs-3 pixelfont">start_</p>
+                    </div>
 
-        <section class="my-3 border-bottom">
-            <h3 class="fs-2 pixelfont text-start ms-3 pt-4">DISTRIBUCIoN DE BOTONES:</h3>
-            <div class="row my-5">
-                <!-- Botón Start -->
-                <div class="col d-flex flex-column justify-content-center align-items-center">
-                    <button id="startButton" class="arcade-button btn" aria-label="Botón Start">
-                        <i class="bi bi-person-standing"></i>
-                    </button>
-                    <p class="arcade-label mt-3 text-center fs-3 pixelfont">start_</p>
+                    <!-- Botón Select -->
+                    <div class="col d-flex flex-column justify-content-center align-items-center">
+                        <button id="selectButton" class="arcade-button btn select-button fs-1" aria-label="Botón Select"
+                            style="font-family: 'Anton', sans-serif;">
+                            COIN
+                        </button>
+                        <p class="arcade-label mt-3 text-center fs-3 pixelfont">select_</p>
+                    </div>
                 </div>
 
-                <!-- Botón Select -->
-                <div class="col d-flex flex-column justify-content-center align-items-center">
-                    <button id="selectButton" class="arcade-button btn select-button fs-1" aria-label="Botón Select"
+                <h3 class="pixelfont mx-3">tambien...</h3>
+
+                <div class="container-fluid d-flex flex-column justify-content-center align-items-center my-4">
+                    <button id="sButton" class="arcade-button btn select-button fs-1" aria-label="Botón Insert Coin"
                         style="font-family: 'Anton', sans-serif;">
                         COIN
                     </button>
-                    <p class="arcade-label mt-3 text-center fs-3 pixelfont">select_</p>
+                    <p class="pixelfont fs-3 mt-3 mb-4 text-center"> oprimiendo este boton Inserta fichas <span
+                            class="text-decoration-underline">solo en juegos arcade</span></p>
+                </div>
+
+                <div class="container text-center mb-5">
+                    <div class="row">
+                        <!-- Fila superior: Y, X, L -->
+                        <div class="col-12 d-flex justify-content-center mb-2 ms-4">
+                            <button id="yButton" class="arcade-button btn pixelfont" aria-label="Botón Y">
+                                Y
+                            </button>
+                            <button id="xButton" class="arcade-button btn pixelfont shift-up-small" aria-label="Botón X">
+                                X
+                            </button>
+                            <button id="lButton" class="arcade-button btn pixelfont shift-up-large" aria-label="Botón L">
+                                L
+                            </button>
+                        </div>
+
+                        <!-- Fila inferior: A, B, R -->
+                        <div class="col-12 d-flex justify-content-center">
+                            <button id="aButton" class="arcade-button btn pixelfont" aria-label="Botón A">
+                                A
+                            </button>
+                            <button id="bButton" class="arcade-button btn pixelfont shift-up-small" aria-label="Botón B">
+                                B
+                            </button>
+                            <button id="rButton" class="arcade-button btn pixelfont shift-up-large" aria-label="Botón R">
+                                R
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="my-3 px-3 border-bottom ">
+                <h3 class="fs-4 pixelfont text-center mb-3">¿Queres CAMBIAR DE JUEGO?</h3>
+                <div class="my-4">
+                    <p class="text-center">
+                        Presioná
+                        <img src="img/start.svg" alt="Start" class="icon-img mx-1">
+                        +
+                        <img src="img/select.svg" alt="Select" class="icon-img mx-1">
+                        para volver a la pantalla principal. Seleccioná un juego nuevo y seguí disfrutando.
+                    </p>
+                </div>
+            </section>
+
+            <section class="my-3 border-bottom">
+                <div class="my-5">
+                    <h3 class="fs-2 pixelfont text-center"><span class="fs-1">Todas las fichas</span><br>equivalen a 12
+                        minutos
+                        de juego</h3>
+                </div>
+            </section>
+
+            <!-- Sección para dejar comentarios -->
+            <section class="my-4">
+                <div class="form-section rounded-5 border p-4">
+                    <h2 class="pixelfont text-center">Contanos tu experiencia</h2>
+
+                    <!-- Formulario usando Formspree -->
+                    <form id="feedbackForm" action="https://formspree.io/f/mpwzwnwe" method="POST">
+                        <div class="mb-3">
+                            <label for="name" class="form-label text-secondary">Nombre</label>
+                            <input type="text" name="name" class="form-control" id="name" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label text-secondary">Tu correo electrónico:</label>
+                            <input type="email" name="email" class="form-control" id="email" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="message" class="form-label text-secondary">Tu mensaje:</label>
+                            <textarea name="message" class="form-control" id="message" rows="4" required></textarea>
+                        </div>
+                        <!-- Puedes agregar otros campos aquí -->
+                        <button type="submit" class="btn btn-primary mt-3">Enviar</button>
+                    </form>
+                </div>
+            </section>
+
+            <!-- Modal -->
+            <div class="modal fade" id="feedbackModal" tabindex="-1" aria-labelledby="feedbackModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content bg-dark text-white">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5 pixelfont text-secondary" id="feedbackModalLabel">Dejanos tu
+                                Comentario</h1>
+                            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                                aria-label="Cerrar"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form id="feedbackFormModal" action="https://formspree.io/f/mpwzwnwe" method="POST">
+                                <div class="mb-3">
+                                    <label for="nameModal" class="form-label text-secondary">Nombre</label>
+                                    <input type="text" class="form-control" id="nameModal" name="name" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="emailModal" class="form-label text-secondary">Correo Electrónico</label>
+                                    <input type="email" class="form-control" id="emailModal" name="email" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="messageModal" class="form-label text-secondary">Comentario</label>
+                                    <textarea class="form-control" id="messageModal" name="message" rows="4"
+                                        required></textarea>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Enviar</button>
+                            </form>
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <h3 class="pixelfont mx-3">tambien...</h3>
 
-            <div class="container-fluid d-flex flex-column justify-content-center align-items-center my-4">
-                <button id="sButton" class="arcade-button btn select-button fs-1" aria-label="Botón Insert Coin"
-                    style="font-family: 'Anton', sans-serif;">
-                    COIN
-                </button>
-                <p class="pixelfont fs-3 mt-3 mb-4 text-center"> oprimiendo este boton Inserta fichas <span
-                        class="text-decoration-underline">solo en juegos arcade</span></p>
+        </main>
+        <footer>
+            <!-- Firma -->
+            <div class="container text-end mt-3">
+                <p class="text-white">Desarrollado por <a href="https://1985webdesing.com/" style="color:#BBFF01">1985
+                        WebDesing</a> |
+                    © <span id="current-year"></span></p>
             </div>
-
-            <div class="container text-center mb-5">
-                <div class="row">
-                    <!-- Fila superior: Y, X, L -->
-                    <div class="col-12 d-flex justify-content-center mb-2 ms-4">
-                        <button id="yButton" class="arcade-button btn pixelfont" aria-label="Botón Y">
-                            Y
-                        </button>
-                        <button id="xButton" class="arcade-button btn pixelfont shift-up-small" aria-label="Botón X">
-                            X
-                        </button>
-                        <button id="lButton" class="arcade-button btn pixelfont shift-up-large" aria-label="Botón L">
-                            L
-                        </button>
-                    </div>
-
-                    <!-- Fila inferior: A, B, R -->
-                    <div class="col-12 d-flex justify-content-center">
-                        <button id="aButton" class="arcade-button btn pixelfont" aria-label="Botón A">
-                            A
-                        </button>
-                        <button id="bButton" class="arcade-button btn pixelfont shift-up-small" aria-label="Botón B">
-                            B
-                        </button>
-                        <button id="rButton" class="arcade-button btn pixelfont shift-up-large" aria-label="Botón R">
-                            R
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="my-3 px-3 border-bottom ">
-            <h3 class="fs-4 pixelfont text-center mb-3">¿queres CAMBIAR DE JUEGO?</h3>
-            <div class="my-4">
-                <p class="text-center">
-                    Presioná
-                    <img src="img/start.svg" alt="Start" class="icon-img mx-1">
-                    +
-                    <img src="img/select.svg" alt="Select" class="icon-img mx-1">
-                    para volver a la pantalla principal. Seleccioná un juego nuevo y seguí disfrutando.
-                </p>
-            </div>
-        </section>
-
-        <section class="my-3 border-bottom">
-            <div class="my-5">
-                <h3 class="fs-2 pixelfont text-center"><span class="fs-1">Todas las fichas</span><br>equivalen a 12
-                    minutos
-                    de juego</h3>
-            </div>
-        </section>
-
-        <!-- Sección para dejar comentarios -->
-        <section class="my-4">
-            <div class=" p-4">
-                <!-- <h2 class="pixelfont mb-4">Contanos tu experiencia</h2> -->
-                <!-- Botón para abrir el modal -->
-                <button type="button" class="btn btn-white  py-3 fs-5 pixelfont" data-bs-toggle="modal"
-                    data-bs-target="#feedbackModal">
-                    Contanos tu experiencia
-                </button>
-            </div>
-        </section>
-
-        <!-- Modal -->
-        <div class="modal fade" id="feedbackModal" tabindex="-1" aria-labelledby="feedbackModalLabel"
-            aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h1 class="modal-title fs-5 pixelfont text-secondary" id="feedbackModalLabel ">Dejanos tu
-                            Comentario</h1>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
-                    </div>
-                    <div class="modal-body">
-                        <form id="feedbackForm" action="php/send_feedback.php" method="POST">
-                            <div class="mb-3">
-                                <label for="name" class="form-label text-secondary">Nombre</label>
-                                <input type="text" class="form-control" id="name" name="name" required>
-                            </div>
-                            <div class="mb-3">
-                                <label for="email" class="form-label text-secondary">Correo Electrónico</label>
-                                <input type="email" class="form-control" id="email" name="email" required>
-                            </div>
-                            <div class="mb-3">
-                                <label for="message" class="form-label text-secondary">Comentario</label>
-                                <textarea class="form-control" id="message" name="message" rows="4" required></textarea>
-                            </div>
-                            <button type="submit" class="btn btn-primary">Enviar</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
-    </main>
-    <footer>
-        <!-- Firma -->
-        <div class="container text-end mt-3">
-            <p class="text-white">Desarrollado por <a href="https://1985webdesing.com/" style="color:#BBFF01">1985
-                    WebDesing</a> |
-                © <span id="current-year"></span></p>
-        </div>
-    </footer>
+        </footer>
+    </div> <!-- End of Locomotive Scroll Container -->
 
     <!-- Archivos de sonido -->
     <audio id="soundStart" src="sounds/coinmario.mp3"></audio>
@@ -366,6 +412,7 @@
     <audio id="soundB" src="sounds/itsme.mp3"></audio>
     <audio id="soundR" src="sounds/ringsonic.mp3"></audio>
     <audio id="soundCoin" src="sounds/lostmario.mp3"></audio>
+
     <!-- Año de la firma -->
     <script>
         document.addEventListener('DOMContentLoaded', function () {
@@ -374,10 +421,17 @@
             yearSpan.textContent = currentYear;
         });
     </script>
-    <!-- Enlaza Bootstrap JS -->
+    
+    <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
+    
+    <!-- SweetAlert2 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    
+    <!-- Locomotive Scroll JS -->
+    <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.js"></script>
 
     <script>
         // Función para reproducir sonido (ya existente)
@@ -402,56 +456,68 @@
         document.getElementById('rButton').addEventListener('click', () => playSound('soundR'));
         document.getElementById('sButton').addEventListener('click', () => playSound('soundCoin')); // Corregido
 
-        // Manejar el envío del formulario con AJAX
-        document.getElementById('feedbackForm').addEventListener('submit', function (e) {
-            e.preventDefault(); // Prevenir el comportamiento por defecto del formulario
+        // Manejar el envío de formularios con AJAX
+        document.addEventListener('DOMContentLoaded', function () {
+            // Seleccionar todos los formularios que apuntan a Formspree
+            const forms = document.querySelectorAll('form[action="https://formspree.io/f/mpwzwnwe"]');
 
-            const form = this;
-            const formData = new FormData(form);
+            forms.forEach(form => {
+                form.addEventListener('submit', function (e) {
+                    e.preventDefault(); // Prevenir el comportamiento por defecto del formulario
 
-            // Enviar los datos del formulario mediante Fetch API
-            fetch('send_feedback.php', {
-                method: 'POST',
-                body: formData
-            })
-                .then(response => response.json()) // Parsear la respuesta como JSON
-                .then(data => {
-                    if (data.success) {
-                        // Mostrar mensaje de éxito con SweetAlert2
-                        Swal.fire(
-                            '¡Enviado!',
-                            'Gracias por tu comentario. Hemos recibido tu experiencia.',
-                            'success'
-                        ).then(() => {
-                            // Opcional: Resetear el formulario y cerrar el modal
-                            form.reset();
-                            const modalElement = document.getElementById('feedbackModal');
-                            const modal = bootstrap.Modal.getInstance(modalElement);
-                            modal.hide();
+                    const formData = new FormData(form);
+
+                    // Enviar los datos del formulario mediante Fetch API a Formspree
+                    fetch(form.action, {
+                        method: form.method,
+                        body: formData,
+                        headers: {
+                            'Accept': 'application/json'
+                        }
+                    })
+                        .then(response => {
+                            if (response.ok) {
+                                return response.json();
+                            } else {
+                                return response.json().then(data => {
+                                    throw new Error(data.error || 'Hubo un problema al enviar el formulario.');
+                                });
+                            }
+                        })
+                        .then(data => {
+                            // Mostrar mensaje de éxito con SweetAlert2
+                            Swal.fire(
+                                '¡Enviado!',
+                                'Gracias por tu comentario. Hemos recibido tu experiencia.',
+                                'success'
+                            ).then(() => {
+                                // Resetear el formulario y cerrar el modal si está abierto
+                                form.reset();
+                                if (form.id === 'feedbackFormModal') {
+                                    const modalElement = document.getElementById('feedbackModal');
+                                    const modal = bootstrap.Modal.getInstance(modalElement);
+                                    modal.hide();
+                                }
+                            });
+                        })
+                        .catch(error => {
+                            console.error('Error:', error);
+                            Swal.fire(
+                                'Error',
+                                error.message || 'Hubo un problema al enviar tu comentario. Por favor, inténtalo de nuevo.',
+                                'error'
+                            );
                         });
-                    } else {
-                        // Mostrar mensaje de error con SweetAlert2
-                        Swal.fire(
-                            'Error',
-                            data.error || 'Hubo un problema al enviar tu comentario. Por favor, inténtalo de nuevo.',
-                            'error'
-                        );
-                    }
-                })
-                .catch((error) => {
-                    console.error('Error:', error);
-                    Swal.fire(
-                        'Error',
-                        'Hubo un problema al enviar tu comentario. Por favor, inténtalo de nuevo.',
-                        'error'
-                    );
                 });
+            });
+
+            // Inicializar Locomotive Scroll
+            const scroll = new LocomotiveScroll({
+                el: document.querySelector('[data-scroll-container]'),
+                smooth: true
+            });
         });
     </script>
-
-
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 </body>
 
