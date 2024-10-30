@@ -556,74 +556,72 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
         document.getElementById("contactForm").addEventListener("submit", async function (event) {
-    event.preventDefault(); // Evita el envío estándar del formulario
+            event.preventDefault(); // Evita el envío estándar del formulario
 
-    // Validación del formulario para asegurarnos de que todos los campos están llenos
-    const name = document.getElementById('name').value.trim();
-    const email = document.getElementById('email').value.trim();
-    const message = document.getElementById('message').value.trim();
+            // Validación del formulario para asegurarnos de que todos los campos están llenos
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const message = document.getElementById('message').value.trim();
 
-    if (!name || !email || !message) {
-        // Mostrar un SweetAlert si algún campo está vacío
-        Swal.fire({
-            icon: 'warning',
-            title: 'Campos Requeridos',
-            text: 'Por favor, completa todos los campos antes de enviar.',
-            confirmButtonText: 'Aceptar'
+            if (!name || !email || !message) {
+                // Mostrar un SweetAlert si algún campo está vacío
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'Campos Requeridos',
+                    text: 'Por favor, completa todos los campos antes de enviar.',
+                    confirmButtonText: 'Aceptar'
+                });
+                return; // No continuar si falta algún campo
+            }
+
+            // Organiza los valores del formulario en un objeto simple
+            const data = {
+                name: name,
+                email: email,
+                message: message
+            };
+
+            try {
+                // Envía los datos usando Fetch API
+                const response = await fetch(event.target.action, {
+                    method: "POST",
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body: JSON.stringify(data)
+                });
+
+                // Comprueba si el envío fue exitoso
+                if (response.ok) {
+                    Swal.fire({
+                        icon: 'success',
+                        title: '¡Mensaje Enviado!',
+                        text: 'Gracias por contactarnos. Te responderemos a la brevedad.',
+                        confirmButtonText: 'Aceptar'
+                    });
+                    // Limpia el formulario después de enviarlo
+                    event.target.reset();
+                } else {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error al Enviar',
+                        text: 'Hubo un problema al enviar el formulario. Por favor, intenta nuevamente.',
+                        confirmButtonText: 'Aceptar'
+                    });
+                }
+            } catch (error) {
+                // Maneja el error en caso de que falle la solicitud
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error de Conexión',
+                    text: 'No se pudo conectar con el servidor. Revisa tu conexión e intenta nuevamente.',
+                    confirmButtonText: 'Aceptar'
+                });
+            }
         });
-        return; // No continuar si falta algún campo
-    }
-
-    // Organiza los valores del formulario en un objeto simple
-    const data = {
-        name: name,
-        email: email,
-        message: message
-    };
-
-    try {
-        // Envía los datos usando Fetch API
-        const response = await fetch(event.target.action, {
-            method: "POST",
-            headers: {
-                'Content-Type': 'application/json',
-                'Accept': 'application/json'
-            },
-            body: JSON.stringify(data)
-        });
-
-        // Comprueba si el envío fue exitoso
-        if (response.ok) {
-            Swal.fire({
-                icon: 'success',
-                title: '¡Mensaje Enviado!',
-                text: 'Gracias por contactarnos. Te responderemos a la brevedad.',
-                confirmButtonText: 'Aceptar'
-            });
-            // Limpia el formulario después de enviarlo
-            event.target.reset();
-        } else {
-            Swal.fire({
-                icon: 'error',
-                title: 'Error al Enviar',
-                text: 'Hubo un problema al enviar el formulario. Por favor, intenta nuevamente.',
-                confirmButtonText: 'Aceptar'
-            });
-        }
-    } catch (error) {
-        // Maneja el error en caso de que falle la solicitud
-        Swal.fire({
-            icon: 'error',
-            title: 'Error de Conexión',
-            text: 'No se pudo conectar con el servidor. Revisa tu conexión e intenta nuevamente.',
-            confirmButtonText: 'Aceptar'
-        });
-    }
-});
-
-
     </script>
-    
+
 
 </body>
 
