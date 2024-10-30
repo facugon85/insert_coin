@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Insert Coin - Retroarcades</title>
+    <link rel="shortcut icon" href="/img/logo.png" type="image/png">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <!-- Locomotive Scroll CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/locomotive-scroll/dist/locomotive-scroll.min.css">
+    <!-- Custom CSS -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
+
+        @font-face {
+            font-family: 'PixelFont';
+            src: url('font/kemkopixel.TTF') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .pixelfont {
+            font-family: 'PixelFont', sans-serif;
+        }
+
+        .arcade-section {
+            padding: 4rem 0;
+        }
+
+        .arcade-img {
+            border-radius: 0.5rem;
+            width: 100%;
+            height: auto;
+        }
+
+        .alternating-section:nth-child(even) .content {
+            flex-direction: row-reverse;
+        }
+
+        .footer {
+            background-color: #343a40;
+            color: white;
+            padding: 3rem 0;
+        }
+
+        .footer a {
+            color: #fbd500;
+        }
+
+        .form-control,
+        .btn-primary {
+            border-radius: 0.5rem;
+        }
+
+        /* Estilos generales para la sección hero */
+        .hero {
+            position: relative;
+            overflow: hidden;
+            background: #0d0d0d;
+            /* Color de fondo oscuro */
+        }
+
+        /* Crear el fondo de cuadrícula Synthwave */
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, #ff00c8 25%, transparent 25%) -50px 0,
+                linear-gradient(-45deg, #00fff9 25%, transparent 25%) -50px 0,
+                linear-gradient(45deg, #ff00c8 25%, transparent 25%),
+                linear-gradient(-45deg, #00fff9 25%, transparent 25%);
+            background-size: 100px 100px;
+            transform: translate(-50%, -50%) rotate(0deg);
+            animation: rotateBackground 20s linear infinite;
+            z-index: -1;
+            opacity: 0.3;
+        }
+
+        /* Animación para rotar el fondo */
+        @keyframes rotateBackground {
+            from {
+                transform: translate(-50%, -50%) rotate(0deg);
+            }
+
+            to {
+                transform: translate(-50%, -50%) rotate(360deg);
+            }
+        }
+
+        /* Efecto de degradado adicional */
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(255, 0, 200, 0.2), rgba(0, 255, 249, 0.2));
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* Estilos para el contenido dentro de la sección hero */
+        .hero .container {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero img {
+            filter: drop-shadow(0 0 10px #ff00c8) drop-shadow(0 0 20px #00fff9);
+        }
+
+        /* Opcional: Animaciones de texto si descomentas el título y párrafo */
+        .hero h1,
+        .hero p {
+            animation: fadeInUp 2s ease-out forwards;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Estilo general del logo con animación de brillo */
+        .logo {
+            position: relative;
+            filter: drop-shadow(0 0 10px #ff00c8) drop-shadow(0 0 20px #00fff9);
+            animation: glow 2s infinite alternate;
+        }
+
+        /* Animación de brillo pulsante */
+        @keyframes glow {
+            from {
+                filter: drop-shadow(0 0 10px #ff00c8) drop-shadow(0 0 20px #00fff9);
+            }
+
+            to {
+                filter: drop-shadow(0 0 20px #ff00c8) drop-shadow(0 0 30px #00fff9);
+            }
+        }
+
+        .superposed-image {
+            transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease, z-index 0.3s ease;
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+            filter: brightness(0.9);
+            z-index: 1;
+            /* Por defecto, las imágenes estarán en el mismo nivel */
+        }
+
+        .superposed-image:hover {
+            transform: scale(1.1) rotate(0deg);
+            box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.5);
+            filter: brightness(1);
+            z-index: 10;
+            /* Al pasar el cursor, la imagen se mostrará al frente */
+        }
+    </style>
+</head>
+
+<body data-scroll-container>
+
+    <!-- Landing Page Content -->
+    <main data-scroll-container>
+
+        <!-- Hero Section -->
+        <!-- <section class="hero text-center text-white bg-dark py-5" data-scroll>
+            <div class="container">
+                <img src="/img/logo.png" alt="" class="w-25">
+                <h1 class="display-4">Insert Coin - Retroarcades</h1>
+                <p class="lead">Conoce nuestras máquinas arcade personalizadas y revive la nostalgia.</p>
+            </div>
+        </section> -->
+        <section class="hero text-center text-white bg-dark py-5" data-scroll>
+            <div class="container">
+                <img src="/img/logo.png" alt="Logo" class="w-25 logo">
+                <!--
+                <h1 class="display-4">Insert Coin - Retroarcades</h1>
+                <p class="lead">Conoce nuestras máquinas arcade personalizadas y revive la nostalgia.</p>
+                -->
+            </div>
+        </section>
+
+
+
+        <!-- Arcade Sections -->
+        <section class="arcade-section alternating-section" data-scroll>
+            <div class="container">
+                <div class="row align-items-center content">
+                    <div class="col-md-6">
+                        <img src="/img/arcade/stick_doble.jpg" class="arcade-img shadow rounded-5" alt="Joystick Doble">
+                    </div>
+                    <div class="col-md-6">
+                        <h2 class="pixelfont">Challenger</h2>
+                        <p class="fw-bold">"Revive la nostalgia con amigos"</p><p>Disfruta al máximo con nuestro Stick Doble, diseñado para ofrecer la auténtica experiencia arcade para dos jugadores. Con más de 10 consolas y miles de juegos clásicos, revive tus títulos favoritos y compártelos con amigos en cualquier ocasión. Este sistema está pensado para brindar entretenimiento sin interrupciones, con una amplia variedad de títulos que nunca dejan de emocionar.</p>
+
+                        <p>Simplemente conéctalo y deja que la nostalgia te lleve de regreso a esos momentos llenos de diversión. Además, puedes conectar hasta dos joysticks mas, ya sea mediante  USB, y vivir la experiencia cooperativa al máximo, igual que en los salones de videojuegos de antaño. Stick Doble es ideal para sesiones de juego con amigos, celebraciones o simplemente para traer la atmósfera arcade a la comodidad de tu hogar.</p>
+                         <div>
+                            <p class="fw-bold">Especificaciones técnicas:</p>
+                            <ul class="list-unstyled">
+                                <li><i class="bi bi-check2-circle me-2"></i><span class="fw-bold">Almacenamiento:</span>  128 GB</li>
+                                <li><i class="bi bi-check2-circle me-2"></i><span class="fw-bold">Procesador:</span>  PC J1800 ECS</li>
+                                <li><i class="bi bi-check2-circle me-2"></i><span class="fw-bold">Memoria RAM:</span>4 GB</li>
+                                <li><i class="bi bi-check2-circle me-2"></i>Diseñado para dos jugadores</li>
+                                <li><i class="bi bi-check2-circle me-2"></i>Compacto y práctico</li>
+                            </ul>
+                        </div>
+                        <a href="https://wa.me/1234567890?text=Hola%2C%20estoy%20interesado%20en%20el%20Stick%20Simple%20de%20Insert%20Coin."
+                            class="btn btn-success mt-3" target="_blank">
+                            <i class="bi bi-whatsapp"></i> Consultar
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section class="arcade-section alternating-section" data-scroll>
+            <div class="container">
+                <div class="row align-items-center content">
+                    <div class="col-md-6">
+                        <img src="img/arcade/stick_boy.jpg" class="arcade-img shadow rounded-5" alt="Joystick Simple">
+                    </div>
+                    <div class="col-md-6">
+                        <h2 class="pixelfont">stick-boy</h2>
+                        <p class="fw-bold">"El Stick-Boy es la puerta de entrada perfecta al universo retro"</p>
+<p>Stick-Boy combina la experiencia arcade con la comodidad de la tecnología portátil, ofreciéndote la magia retro en cualquier lugar. Con más de 10 consolas y 10,000 juegos clásicos, te invita a revivir los mejores momentos del gaming. Ideal para desconectarse del día a día y disfrutar de una experiencia auténtica de los juegos retro, ya sea solo o acompañado.</p>
+
+<p>Stick-Boy ofrece una experiencia real de los juegos clásicos, y puedes compartir la diversión conectando otro joystick, ya sea por Bluetooth o por USB. Perfecto para esos momentos de nostalgia, reuniones con amigos, o para simplemente relajarte y volver a sentir la emoción de la era dorada del gaming.</p>
+
+                        <div>
+                            <p class="fw-bold">Especificaciones técnicas:</p>
+                            <ul class="list-unstyled">
+                                <li><i class="bi bi-check2-circle me-2"></i><span class="fw-bold">Almacenamiento:</span>  128 GB</li>
+                                <li><i class="bi bi-check2-circle me-2"></i><span class="fw-bold">Base:</span>  Raspberry Pi 4 o 5 segun disponibilidad</li>
+                                <li><i class="bi bi-check2-circle me-2"></i><span class="fw-bold">Ram:</span> 2 o 4gb segun disponibilidad</li>
+                                <li><i class="bi bi-check2-circle me-2"></i><span class="fw-bold"></span> Salida HDMI</li>
+                                <li><i class="bi bi-check2-circle me-2"></i><span class="fw-bold"></span> 1 Puertos USB 2.0</li>
+                                <!-- <li><span class="fw-bold"></span> MicroSD como base de almacenamiento</li> -->
+                            </ul>
+                        </div>
+                        <a href="https://wa.me/1234567890?text=Hola%2C%20estoy%20interesado%20en%20el%20Stick%20Simple%20de%20Insert%20Coin."
+                            class="btn btn-success mt-3" target="_blank">
+                            <i class="bi bi-whatsapp"></i> Consultar
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="arcade-section alternating-section" data-scroll>
+            <div class="container">
+                <div class="row align-items-center content">
+                    <div class="col-md-6">
+                        <img src="img/arcade/barto.jpg" class="arcade-img shadow rounded-5" alt="Batrop">
+                    </div>
+                    <div class="col-md-6">
+                        <h2 class="pixelfont">twin deck</h2>
+                        <p><strong>"Un homenaje a la era dorada de los videojuegos"</strong></p>
+                        <p>Redescubre la <strong>magia de los arcades</strong> con el <strong>Bartop Doble,</strong> un
+                            verdadero homenaje a la era dorada
+                            de los videojuegos. Con su diseño compacto y su pantalla clásica, este arcade te transporta
+                            directamente a esos momentos llenos de <strong>emoción y nostalgia.</strong> Perfecto para
+                            cualquier rincón
+                            de tu hogar, el Twin Deck es ideal para revivir partidas épicas, <strong>ya sea en solitario
+                                o
+                                acompañado,</strong> brindándote la experiencia auténtica de los salones recreativos.
+                        </p>
+                        <div>
+                            <p class="fw-bold">Especificaciones técnicas:</p>
+                            <ul class="list-unstyled">
+                                <li><i class="bi bi-check2-circle me-2"></i><span class="fw-bold">Monitor:</span> Pantalla 4:3 para una estética retro auténtica</li>
+                                <li><i class="bi bi-check2-circle me-2"></i><span class="fw-bold">Almacenamiento:</span> 128 GB SSD (expandible)</li>
+                                <li><i class="bi bi-check2-circle me-2"></i><span class="fw-bold">Procesador:</span> PC J1800</li>
+                                <li><i class="bi bi-check2-circle me-2"></i><span class="fw-bold">Memoria RAM:</span> 4 GB</li>
+                                <li><i class="bi bi-check2-circle me-2"></i><span class="fw-bold">Puertos USB:</span> 2 x USB 2.0 para conectar accesorios</li>
+                            </ul>
+                        </div>
+                        <a href="https://wa.me/1234567890?text=Hola%2C%20estoy%20interesado%20en%20el%20Stick%20Simple%20de%20Insert%20Coin."
+                            class="btn btn-success mt-3" target="_blank">
+                            <i class="bi bi-whatsapp"></i> Consultar
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="arcade-section alternating-section" data-scroll>
+            <div class="container">
+                <div class="row align-items-center content">
+                    <div class="col-md-6">
+                        <img src="img/arcade/arcade_pie.jpg" class="arcade-img shadow rounded-5" alt="Arcade de Pie">
+                    </div>
+                    <div class="col-md-6">
+                        <h2 class="pixelfont">Neo Classic</h2>
+                        <p><strong>"Vive la experiencia retro definitiva"</strong></p>
+                        <p>Nuestro <span class="fw-bold">Arcade de Pie,</span> diseñado para los <strong> verdaderos
+                                amantes del gaming clásico.</strong> Con un diseño
+                            <strong>robusto y auténtico,</strong> este arcade te transporta directamente a la atmósfera
+                            de los <strong>viejos
+                                salones recreativos.</strong> Su pantalla tradicional y estilo inconfundible hacen que
+                            cada partida
+                            sea tan emocionante como la primera vez. Coloca el Neo Classic en tu hogar y revive esos
+                            momentos llenos de <strong>adrenalina y diversión sin igual.</strong>
+                        </p>
+                        <div>
+                            <p class="fw-bold">Especificaciones técnicas:</p>
+                            <ul class="list-unstyled">
+                                <li><i class="bi bi-check2-circle me-2"></i><span class="fw-bold">Monitor:</span> Pantalla 4:3 para recrear la estética clásica</li>
+                                <li><i class="bi bi-check2-circle me-2"></i><span class="fw-bold">Almacenamiento:</span> 128 GB SSD (expandible)</li>
+                                <li><i class="bi bi-check2-circle me-2"></i><span class="fw-bold">Procesador:</span> Intel i3</li>
+                                <li><i class="bi bi-check2-circle me-2"></i><span class="fw-bold">Memoria RAM:</span> 4 GB</li>
+                                <!-- <li><span class="fw-bold">Diseño robusto, ideal para un ambiente retro auténtico.</span></li> -->
+                            </ul>
+                        </div>
+                        <a href="https://wa.me/1234567890?text=Hola%2C%20estoy%20interesado%20en%20el%20Stick%20Simple%20de%20Insert%20Coin."
+                            class="btn btn-success mt-3" target="_blank">
+                            <i class="bi bi-whatsapp"></i> Consultar
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="arcade-section alternating-section" data-scroll>
+            <div class="container">
+                <div class="row align-items-center content">
+                    <div class="col-md-6">
+                        <img src="img/arcade/_CSC8479-3.jpg" class="arcade-img rounded-5" alt="Batrop">
+                    </div>
+                    <div class="col-md-6">
+                        <h2 class="pixelfont">Vault-BOY</h2>
+                        <p><strong>"Retro y compacto"</strong></p>
+                        <p>Descubre <span class="fw-bold">Vault-Boy</span>, un auténtico baúl de los recuerdos lleno de
+                            aventuras clásicas. Con más de <strong>20 consolas</strong> y más de <strong>15,000 juegos
+                                icónicos</strong>, esta máquina te llevará de vuelta a la era dorada del gaming, todo en
+                            un formato compacto y listo para usar. Simplemente conéctalo y arranca desde cualquier PC,
+                            sin complicaciones, para disfrutar de tus títulos favoritos en cualquier lugar.</p>
+                        <p>Este sistema viene en una carcasa original hecha de cartuchos de <strong>NES, SNES, SEGA, N64
+                                y más</strong>, según disponibilidad, lo que hace que cada Vault-Boy sea único y conecte
+                            con la esencia de la nostalgia. Además, con un <strong>SSD de 256 GB</strong> perfectamente
+                            configurado, Vault-Boy es la manera más sencilla de llevar toda la nostalgia retro donde
+                            quiera que vayas.</p>
+                        <p><span class="fw-bold">Tener en cuenta:</span><br>
+                            El rendimiento de la emulación está ligado a la potencia de tu equipo; para sistemas más
+                            complejos, se recomienda un hardware más potente. </p>
+                        <p class="fst-italic">¡Todo lo que necesitas para
+                            revivir la magia de los videojuegos retro, en un solo lugar!</p>
+                        <a href="https://wa.me/1234567890?text=Hola%2C%20estoy%20interesado%20en%20el%20Stick%20Simple%20de%20Insert%20Coin."
+                            class="btn btn-success mt-3" target="_blank">
+                            <i class="bi bi-whatsapp"></i> Consultar
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="arcade-section alternating-section" data-scroll>
+            <div class="container">
+                <h3 class="pixelfont text-center my-5">¿Te gustaria llevar un arcade a tu proximo evento?</h3>
+                <div class="row">
+                    <div class="col">
+                        <div class="event-images position-relative mb-5">
+                            <!-- Imagen 1 -->
+                            <img src="/img/event_1.png" alt="Evento 1"
+                                class="img-fluid retro-image rounded-3 position-absolute superposed-image"
+                                style="width: 200px; top: 0; left: 0; transform: rotate(-5deg);">
+
+                            <!-- Imagen 2 -->
+                            <img src="/img/event_2.png" alt="Evento 2"
+                                class="img-fluid retro-image rounded-3 position-absolute superposed-image"
+                                style="width: 220px; top: 50px; left: 180px; transform: rotate(3deg);">
+
+                            <!-- Imagen 3 -->
+                            <img src="/img/event_3.png" alt="Evento 3"
+                                class="img-fluid retro-image rounded-3 position-absolute superposed-image"
+                                style="width: 190px; top: 100px; left: 50px; transform: rotate(-8deg);">
+
+                            <!-- Imagen 4 -->
+                            <img src="/img/event_4.png" alt="Evento 4"
+                                class="img-fluid retro-image rounded-3 position-absolute superposed-image"
+                                style="width: 210px; top: 150px; left: 280px; transform: rotate(5deg);">
+
+                            <!-- Imagen 5 -->
+                            <img src="/img/event_5.png" alt="Evento 5"
+                                class="img-fluid retro-image rounded-3 position-absolute superposed-image"
+                                style="width: 200px; top: 200px; left: 100px; transform: rotate(-3deg);">
+                        </div>
+
+
+
+                    </div>
+                    <div class="col">
+                        <div class="retro-card mb-4 rounded-5 p-4">
+                            <div>
+                                <p><strong>Alquiler de Arcades para Eventos</strong></p>
+
+                                <p>Haz de tu evento algo <strong>inolvidable</strong> con el <strong>auténtico
+                                        entretenimiento retro</strong>. En <strong>Insert Coin</strong>, ofrecemos el
+                                    alquiler de nuestros <strong>Arcades de Pie y Bartops</strong> para transformar
+                                    cualquier celebración en una experiencia cargada de <strong>nostalgia y
+                                        diversión</strong>. Añade ese toque vintage que hará que tus invitados no paren
+                                    de jugar y <strong>revivan los mejores momentos</strong>.</p>
+
+                                <p>Nuestros arcades son ideales para <strong>fiestas de cumpleaños</strong>,
+                                    <strong>casamientos</strong>, <strong>eventos empresariales</strong> y
+                                    <strong>reuniones especiales</strong>. Sorprende a tus invitados con la
+                                    <strong>magia del gaming retro</strong>, y asegúrate de que todos se diviertan sin
+                                    parar.</p>
+
+                                <p><strong>¡Haz tu consulta hoy mismo!</strong> Completa el formulario y nuestro equipo
+                                    te ayudará a organizar el alquiler perfecto. Personaliza la experiencia según tus
+                                    necesidades y <strong>crea recuerdos inolvidables</strong> con <strong>Insert
+                                        Coin</strong>.</p>
+
+                                <p>Nuestros arcades son perfectos para crear una experiencia única,
+                                    donde la diversión está garantizada.</p>
+                            </div>
+                        </div>
+
+                        <div class="text-start">
+                            <a href="https://wa.me/1234567890?text=Hola%2C%20estoy%20interesado%20en%20alquilar%20una%20máquina%20arcade%20para%20mi%20evento."
+                                class="btn btn-success btn-lg mt-3 retro-button" target="_blank">
+                                <i class="bi bi-whatsapp"></i> Consultar
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+
+
+
+
+            </div>
+        </section>
+
+
+
+
+        <!-- Footer with Contact Form -->
+        <footer class="footer pb-5">
+            <div class="container">
+                <h2 class="text-center mb-4 pixelfont">Contactanos</h2>
+                <div class="row justify-content-center">
+                    <div class="col">
+                        <div class="my-4">
+                            <h4>Personaliza tu Arcade y Hazlo Único</h4>
+                        </div>
+                        <div class="my-3">
+                            <p>En <strong>Insert Coin</strong>, sabemos que cada jugador es único, y queremos que tu arcade lo refleje. ¿Tienes un diseño especial en mente? Nosotros te ayudamos a hacerlo realidad. Puedes personalizar cada detalle: <strong>diseño visual, colores y gráficos</strong>, todo a tu gusto. Queremos que cada partida se sienta como algo realmente tuyo.</p>
+
+                            <p><strong>Cuéntanos tu idea y juntos la haremos realidad</strong>. Nuestro equipo está listo para escuchar tus ideas y crear un arcade que te haga revivir la magia de los juegos retro, pero a tu manera. Rellena el formulario y dinos cómo sería tu arcade ideal.</p>
+                            
+                            
+                        </div>
+
+                    </div>
+                    <div class="col-md-8 col-lg-6">
+                        <form id="contactForm">
+                            <div class="mb-3">
+                                <label for="name" class="form-label">Nombre</label>
+                                <input type="text" class="form-control" id="name" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Correo Electrónico</label>
+                                <input type="email" class="form-control" id="email" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="message" class="form-label">Mensaje</label>
+                                <textarea class="form-control" id="message" rows="4" required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary w-100">Enviar Mensaje</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+    </main>
+
+    <!-- Bootstrap JS y dependencias -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
+        </script>
+    <!-- Locomotive Scroll JS -->
+    <script src="https://unpkg.com/locomotive-scroll/dist/locomotive-scroll.min.js"></script>
+    <!-- Custom JS -->
+    <script>
+        // Configuración de Locomotive Scroll
+        const scroll = new LocomotiveScroll({
+            el: document.querySelector('[data-scroll-container]'),
+            smooth: true
+        });
+
+        // Validación y envío del formulario de contacto
+        document.getElementById('contactForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const message = document.getElementById('message').value.trim();
+
+            if (name && email && message) {
+                // Aquí podrías agregar el envío del formulario a un backend o servicio
+                alert('Gracias por tu mensaje. Nos pondremos en contacto contigo pronto.');
+                this.reset();
+            } else {
+                alert('Por favor completa todos los campos del formulario.');
+            }
+        });
+    </script>
+</body>
+
+</html>
