@@ -12,6 +12,10 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <!-- Locomotive Scroll CSS -->
     <link rel="stylesheet" href="https://unpkg.com/locomotive-scroll/dist/locomotive-scroll.min.css">
+    <!-- Bootstrap JS y dependencias -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
+        </script>
 
     <!-- Custom CSS -->
     <style>
@@ -175,6 +179,10 @@
             z-index: 10;
             /* Al pasar el cursor, la imagen se mostrará al frente */
         }
+        
+        .swal2-container {
+            position: absolute !important;
+        }
     </style>
 </head>
 
@@ -200,9 +208,6 @@
                 -->
             </div>
         </section>
-
-
-
         <!-- Arcade Sections -->
         <section class="arcade-section alternating-section" data-scroll>
             <div class="container">
@@ -228,9 +233,8 @@
                             <p class="fw-bold">Especificaciones técnicas:</p>
                             <ul class="list-unstyled">
                                 <li><i class="bi bi-check2-circle me-2"></i><span class="fw-bold">Almacenamiento:</span>
-                                    128 GB</li>
-                                <li><i class="bi bi-check2-circle me-2"></i><span class="fw-bold">Procesador:</span> PC
-                                    J1800 ECS</li>
+                                   Micro SD de 128/256 GB</li>
+                                <li><i class="bi bi-check2-circle me-2"></i><span class="fw-bold">Base:</span> Raspberry Pi 4/5 según disponibilidad</li>
                                 <li><i class="bi bi-check2-circle me-2"></i><span class="fw-bold">Memoria RAM:</span>4
                                     GB</li>
                                 <li><i class="bi bi-check2-circle me-2"></i>Diseñado para dos jugadores</li>
@@ -271,9 +275,8 @@
                             <p class="fw-bold">Especificaciones técnicas:</p>
                             <ul class="list-unstyled">
                                 <li><i class="bi bi-check2-circle me-2"></i><span class="fw-bold">Almacenamiento:</span>
-                                    128 GB</li>
-                                <li><i class="bi bi-check2-circle me-2"></i><span class="fw-bold">Base:</span> Raspberry
-                                    Pi 4 o 5 segun disponibilidad</li>
+                                    Micro SD de 128/256 GB</li>
+                                <li><i class="bi bi-check2-circle me-2"></i><span class="fw-bold">Base:</span> Raspberry Pi 4/5 según disponibilidad</li>
                                 <li><i class="bi bi-check2-circle me-2"></i><span class="fw-bold">Ram:</span> 2 o 4gb
                                     segun disponibilidad</li>
                                 <li><i class="bi bi-check2-circle me-2"></i><span class="fw-bold"></span> Salida HDMI
@@ -378,7 +381,7 @@
             <div class="container">
                 <div class="row align-items-center content">
                     <div class="col-md-6">
-                        <img src="img/arcade/_CSC8479-3.jpg" class="arcade-img rounded-5" alt="Batrop">
+                        <img src="img/arcade/_CSC8479-3.jpg" class="arcade-img rounded-5 shadow" alt="Batrop">
                     </div>
                     <div class="col-md-6">
                         <h2 class="pixelfont">Vault-BOY</h2>
@@ -478,7 +481,7 @@
             </div>
         </section>
         <!-- Footer with Contact Form -->
-        <footer class="footer pb-5">
+        <!-- <footer class="footer pb-5">
             <div class="container">
                 <h2 class="text-center mb-4 pixelfont">Contactanos</h2>
                 <div class="row justify-content-center">
@@ -518,16 +521,91 @@
                     </div>
                 </div>
             </div>
-        </footer>
+        </footer> -->
 
     </main>
+    <!-- <footer class="footer pb-5">
+        <div class="container">
+            <h2 class="text-center mb-4 pixelfont">Contáctanos</h2>
+            <div class="row justify-content-center">
+                <div class="col">
+                    <div class="my-4">
+                        <h4>Personaliza tu Arcade y Hazlo Único</h4>
+                    </div>
+                    <div class="my-3">
+                        <p>En <strong>Insert Coin</strong>, sabemos que cada jugador es único, y queremos que tu arcade lo
+                            refleje. ¿Tienes un diseño especial en mente? Nosotros te ayudamos a hacerlo realidad. Puedes
+                            personalizar cada detalle: <strong>diseño visual, colores y gráficos</strong>, todo a tu gusto.
+                            Queremos que cada partida se sienta como algo realmente tuyo.</p>
 
-    <!-- Bootstrap JS y dependencias -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
-        </script>
+                        <p><strong>¡Cuéntanos tu idea y juntos la haremos realidad!</strong> Nuestro equipo está listo para
+                            escuchar tus ideas y crear un arcade que te haga revivir la magia de los juegos retro, pero a tu
+                            manera. Rellena el formulario y dinos cómo sería tu arcade ideal.</p>
+                    </div>
+                </div>
+                <div class="col-md-8 col-lg-6">
+                    <form id="contactForm" action="https://formspree.io/f/mpwzwnwe" method="POST">
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Nombre</label>
+                            <input type="text" name="name" class="form-control" id="name" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Correo Electrónico</label>
+                            <input type="email" name="email" class="form-control" id="email" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="message" class="form-label">Mensaje</label>
+                            <textarea name="message" class="form-control" id="message" rows="4" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">Enviar Mensaje</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </footer> -->
+    <footer class="footer pb-5">
+        <div class="container">
+            <h2 class="text-center mb-4 pixelfont">Contactanos</h2>
+            <div class="row justify-content-center">
+                <div class="col">
+                    <div class="my-4">
+                        <h4>Personaliza tu Arcade y Hazlo Único</h4>
+                    </div>
+                    <div class="my-3">
+                        <p>En <strong>Insert Coin</strong>, sabemos que cada jugador es único, y queremos que tu arcade lo
+                            refleje. ¿Tienes un diseño especial en mente? Nosotros te ayudamos a hacerlo realidad. Puedes
+                            personalizar cada detalle: <strong>diseño visual, colores y gráficos</strong>, todo a tu gusto.
+                            Queremos que cada partida se sienta como algo realmente tuyo.</p>
+
+                        <p><strong>¡Cuéntanos tu idea y juntos la haremos realidad!</strong> Nuestro equipo está listo para
+                            escuchar tus ideas y crear un arcade que te haga revivir la magia de los juegos retro, pero a tu
+                            manera. Rellena el formulario y dinos cómo sería tu arcade ideal.</p>
+                    </div>                </div>
+                <div class="col-md-8 col-lg-6">
+                    <form id="contactForm" action="https://formspree.io/f/mpwzwnwe" method="POST">
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Nombre</label>
+                            <input type="text" name="name" class="form-control" id="name" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Correo Electrónico</label>
+                            <input type="email" name="email" class="form-control" id="email" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="message" class="form-label">Mensaje</label>
+                            <textarea name="message" class="form-control" id="message" rows="4" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">Enviar Mensaje</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
     <!-- Locomotive Scroll JS -->
-    <script src="https://unpkg.com/locomotive-scroll/dist/locomotive-scroll.min.js"></script>
+    <!-- <script src="https://unpkg.com/locomotive-scroll/dist/locomotive-scroll.min.js"></script> -->
     <!-- Custom JS -->
     <script>
         // Configuración de Locomotive Scroll
@@ -536,36 +614,20 @@
             smooth: true
         });
 
-        // Validación y envío del formulario de contacto
-        document.getElementById('contactForm').addEventListener('submit', function (e) {
-            e.preventDefault();
-
-            const name = document.getElementById('name').value.trim();
-            const email = document.getElementById('email').value.trim();
-            const message = document.getElementById('message').value.trim();
-
-            if (name && email && message) {
-                // Aquí podrías agregar el envío del formulario a un backend o servicio
-                alert('Gracias por tu mensaje. Nos pondremos en contacto contigo pronto.');
-                this.reset();
-            } else {
-                alert('Por favor completa todos los campos del formulario.');
-            }
-        });
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script>
+        // Validación y envío del formulario de contacto con SweetAlert2
         document.getElementById("contactForm").addEventListener("submit", async function (event) {
             event.preventDefault(); // Evita el envío estándar del formulario
 
-            // Validación del formulario para asegurarnos de que todos los campos están llenos
+            // Obtener los valores del formulario
             const name = document.getElementById('name').value.trim();
             const email = document.getElementById('email').value.trim();
             const message = document.getElementById('message').value.trim();
 
+            // Validar que todos los campos estén llenos
             if (!name || !email || !message) {
                 // Mostrar un SweetAlert si algún campo está vacío
                 Swal.fire({
+                    position: 'center',
                     icon: 'warning',
                     title: 'Campos Requeridos',
                     text: 'Por favor, completa todos los campos antes de enviar.',
@@ -574,45 +636,44 @@
                 return; // No continuar si falta algún campo
             }
 
-            // Organiza los valores del formulario en un objeto simple
-            const data = {
-                name: name,
-                email: email,
-                message: message
-            };
+            // Crear un objeto FormData
+            const formData = new FormData(this);
 
             try {
-                // Envía los datos usando Fetch API
-                const response = await fetch(event.target.action, {
+                // Enviar los datos usando Fetch API
+                const response = await fetch(this.action, {
                     method: "POST",
+                    body: formData,
                     headers: {
-                        'Content-Type': 'application/json',
                         'Accept': 'application/json'
-                    },
-                    body: JSON.stringify(data)
+                    }
                 });
 
-                // Comprueba si el envío fue exitoso
+                // Verificar si el envío fue exitoso
                 if (response.ok) {
                     Swal.fire({
+                        position: 'center',
                         icon: 'success',
                         title: '¡Mensaje Enviado!',
                         text: 'Gracias por contactarnos. Te responderemos a la brevedad.',
                         confirmButtonText: 'Aceptar'
                     });
-                    // Limpia el formulario después de enviarlo
-                    event.target.reset();
+                    // Limpiar el formulario después de enviarlo
+                    this.reset();
                 } else {
+                    const errorData = await response.json();
                     Swal.fire({
+                        position: 'center',
                         icon: 'error',
                         title: 'Error al Enviar',
-                        text: 'Hubo un problema al enviar el formulario. Por favor, intenta nuevamente.',
+                        text: errorData.error || 'Hubo un problema al enviar el formulario. Por favor, intenta nuevamente.',
                         confirmButtonText: 'Aceptar'
                     });
                 }
             } catch (error) {
-                // Maneja el error en caso de que falle la solicitud
+                // Manejar errores de conexión
                 Swal.fire({
+                    position: 'center',
                     icon: 'error',
                     title: 'Error de Conexión',
                     text: 'No se pudo conectar con el servidor. Revisa tu conexión e intenta nuevamente.',
@@ -621,8 +682,6 @@
             }
         });
     </script>
-
-
 </body>
 
 </html>
