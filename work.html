@@ -32,6 +32,7 @@
         body {
             font-family: 'Montserrat', sans-serif;
             scroll-behavior: smooth;
+
         }
 
         .pixelfont {
@@ -184,22 +185,77 @@
         .swal2-container {
             position: absolute !important;
         }
+         /* Estilos generales para los íconos de las redes sociales */
+        /* Estilos generales para la lista de redes sociales */
+        .social-icons {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+            margin-top: 50px;
+        }
+
+        /* Estilos para los íconos de redes sociales */
+        .social-icons li {
+            list-style: none;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        /* Efecto zoom en hover */
+        .social-icons li:hover {
+            transform: scale(1.2);
+        }
+
+        /* Enlace sin subrayado y con un contenedor para íconos */
+        .social-icons a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* Aumenta el tamaño de los íconos */
+        .social-icons i {
+            font-size: 2.5rem;
+        }
+        
+        .marquee-container {
+    overflow: hidden;
+    background: #282828; /* Fondo oscuro */
+    padding: 20px 0;
+    position: relative;
+    width: 100%;
+    max-width: 100vw;
+    height: 5rem;
+}
+
+.marquee-content {
+    display: flex;
+    gap: 40px; /* Espacio entre las imágenes */
+    width: max-content; /* Asegura que el contenido se ajuste al ancho de todas las imágenes */
+    position: absolute; /* Permite mover el contenido de izquierda a derecha */
+    align-items: center; /* Asegura que todas las imágenes estén alineadas */
+}
+
+.marquee-content img {
+    width: 120px; /* Ajusta el tamaño para uniformidad */
+    height: auto; /* Mantén el aspecto para evitar deformación */
+    filter: drop-shadow(2px 4px 6px rgba(0, 0, 0, 0.5));
+    transition: transform 0.3s ease; /* Agrega un efecto al hacer hover */
+}
+
+.marquee-content img:hover {
+    transform: scale(1.1); /* Efecto zoom al hacer hover */
+}
+.spacer {
+    width: 5px; /* Ajusta este valor para el espacio deseado */
+    flex-shrink: 0;
+}
+
+
     </style>
 </head>
 
 <body data-scroll-container>
-
     <!-- Landing Page Content -->
     <main data-scroll-container>
-
-        <!-- Hero Section -->
-        <!-- <section class="hero text-center text-white bg-dark py-5" data-scroll>
-            <div class="container">
-                <img src="/img/logo.png" alt="" class="w-25">
-                <h1 class="display-4">Insert Coin - Retroarcades</h1>
-                <p class="lead">Conoce nuestras máquinas arcade personalizadas y revive la nostalgia.</p>
-            </div>
-        </section> -->
         <section class="hero text-center text-white bg-dark py-5" data-scroll>
             <div class="container">
                 <img src="img/logo.png" alt="Logo" class="logo">
@@ -268,9 +324,20 @@
                     <div class="col-md-6">
                         <h2 class="pixelfont">stick-boy</h2>
                         <p class="fw-bold">"El Stick-Boy es la puerta de entrada perfecta al universo retro"</p>
-                        <p>Stick-Boy combina la experiencia arcade con la comodidad de la tecnología portátil, ofreciéndote la <span class="fw-bold">magia retro en cualquier lugar</span>. Con más de <span class="fw-bold">10 consolas</span> y <span class="fw-bold">10,000 juegos clásicos</span>, te invita a <span class="fw-bold">revivir los mejores momentos del gaming</span>. Ideal para <span class="fw-bold">desconectarse del día a día</span> y disfrutar de una <span class="fw-bold">experiencia auténtica de los juegos retro</span>, ya sea solo o acompañado.</p>
+                        <p>Stick-Boy combina la experiencia arcade con la comodidad de la tecnología portátil,
+                            ofreciéndote la <span class="fw-bold">magia retro en cualquier lugar</span>. Con más de
+                            <span class="fw-bold">10 consolas</span> y <span class="fw-bold">10,000 juegos
+                                clásicos</span>, te invita a <span class="fw-bold">revivir los mejores momentos del
+                                gaming</span>. Ideal para <span class="fw-bold">desconectarse del día a día</span> y
+                            disfrutar de una <span class="fw-bold">experiencia auténtica de los juegos retro</span>, ya
+                            sea solo o acompañado.</p>
 
-                        <p>Stick-Boy ofrece una <span class="fw-bold">experiencia real de los juegos clásicos</span>, y puedes <span class="fw-bold">compartir la diversión conectando otro joystick</span>, ya sea por Bluetooth o por USB. Perfecto para esos <span class="fw-bold">momentos de nostalgia</span>, <span class="fw-bold">reuniones con amigos</span>, o para simplemente relajarte y <span class="fw-bold">volver a sentir la emoción de la era dorada del gaming</span>.</p>
+                        <p>Stick-Boy ofrece una <span class="fw-bold">experiencia real de los juegos clásicos</span>, y
+                            puedes <span class="fw-bold">compartir la diversión conectando otro joystick</span>, ya sea
+                            por Bluetooth o por USB. Perfecto para esos <span class="fw-bold">momentos de
+                                nostalgia</span>, <span class="fw-bold">reuniones con amigos</span>, o para simplemente
+                            relajarte y <span class="fw-bold">volver a sentir la emoción de la era dorada del
+                                gaming</span>.</p>
 
                         <div>
                             <p class="fw-bold">Especificaciones técnicas:</p>
@@ -401,8 +468,7 @@
                         <p><span class="fw-bold">Tener en cuenta:</span><br>
                             El rendimiento de la emulación está ligado a la potencia de tu equipo; para sistemas más
                             complejos, se recomienda un hardware más potente. </p>
-                        <p class="fst-italic">¡Todo lo que necesitas para
-                            revivir la magia de los videojuegos retro, en un solo lugar!</p>
+
                         <a href="https://wa.me/+5491168980563?text=Hola%2C%20estoy%20interesado%20en%20el%20modelo%20Vault-boy."
                             class="btn btn-success mt-3" target="_blank">
                             <i class="bi bi-whatsapp"></i> Consultar
@@ -488,9 +554,29 @@
                 </div>
             </div>
         </section>
+        <section class="marquee-container">
+            <div class="marquee-content" id="marqueeContent">
+                <img src="/img/consol/arcade.png" alt="Arcade">
+                <img src="/img/consol/Atari.png" alt="Atari">
+                <img src="/img/consol/dreamcast.png" alt="Dreamcast">
+                <img src="/img/consol/megadrive.png" alt="Mega Drive">
+                <img src="/img/consol/n64.png" alt="Nintendo 64">
+                <img src="/img/consol/neogeo.png" alt="Neo Geo">
+                <img src="/img/consol/nes.png" alt="NES">
+                <img src="/img/consol/psp.png" alt="PSP">
+                <img src="/img/consol/psx.png" alt="PlayStation">
+                <img src="/img/consol/snes.png" alt="SNES">
+                <img src="/img/consol/xbox360.png" alt="Xbox 360">
+                <div class="spacer"></div>
+            </div>
+        </section>
+        
+        
+        
+        
     </main>
 
-    <footer class="footer pb-5">
+    <footer class="footer pb-3 pt-4">
         <div class="container">
             <h2 class="text-center mb-4 pixelfont">Contactanos</h2>
             <div class="row justify-content-center">
@@ -513,6 +599,18 @@
                             a tu
                             manera. Rellena el formulario y dinos cómo sería tu arcade ideal.</p>
                     </div>
+                    <ul class="list-unstyled d-flex fs-3 gap-3 social-icons">
+                        <li>
+                            <a href="https://www.instagram.com/insertcoinbox/" target="_blank">
+                                <i class="bi bi-instagram"></i>
+                            </a>
+                        </li>
+                        <!-- <li>
+                            <a href="https://www.youtube.com/@insert_coin" target="_blank">
+                                <i class="bi bi-youtube"></i>
+                            </a>
+                        </li> -->
+                    </ul>                
                 </div>
                 <div class="col-md-8 col-lg-6">
                     <form id="contactForm" action="https://formspree.io/f/mpwzwnwe" method="POST">
@@ -533,8 +631,21 @@
                 </div>
             </div>
         </div>
+        <!-- Firma -->
+        <div class="container text-end mt-3">
+            <p class="text-white">Desarrollado por <a href="https://1985webdesing.com/" style="color:#BBFF01">1985
+                    WebDesing</a> |
+                © <span id="current-year"></span></p>
+        </div>
     </footer>
-
+    <!-- Año de la firma -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const yearSpan = document.getElementById('current-year');
+            const currentYear = new Date().getFullYear();
+            yearSpan.textContent = currentYear;
+        });
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <!-- Locomotive Scroll JS -->
@@ -615,6 +726,37 @@
             }
         });
     </script>
+   <script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const marqueeContent = document.getElementById("marqueeContent");
+        const clone = marqueeContent.cloneNode(true);
+        marqueeContent.parentElement.appendChild(clone);
+    
+        let position = 0;
+        const scrollWidth = marqueeContent.scrollWidth;
+        const extraSpace = 5; // Debe coincidir con el ancho del espaciador
+    
+        function animateMarquee() {
+            position -= 1; // Velocidad de movimiento
+    
+            // Ajusta la condición para incluir el espacio extra
+            if (position <= -scrollWidth - extraSpace) {
+                position = 0;
+            }
+    
+            // Aplica la transformación considerando el espacio extra
+            marqueeContent.style.transform = `translateX(${position}px)`;
+            clone.style.transform = `translateX(${position + scrollWidth + extraSpace}px)`;
+    
+            requestAnimationFrame(animateMarquee);
+        }
+    
+        // Iniciar la animación
+        animateMarquee();
+    });
+    </script>
+    
+        
 </body>
 
 </html>
